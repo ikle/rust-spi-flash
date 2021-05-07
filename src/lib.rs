@@ -749,7 +749,7 @@ impl<'a, A: FlashAccess> Flash<'a, A> {
     /// Read the device's 64-bit unique ID, if present.
     pub fn read_unique_id(&mut self) -> Result<u64> {
         self.exchange(Command::ReadUniqueID, &[0, 0, 0, 0], 8)
-            .map(|data| u64::from_be_bytes(data.try_into().unwrap()))
+            .map(|data| u64::from_be_bytes(data.as_slice().try_into().unwrap()))
     }
 
     /// Read status register 1.
