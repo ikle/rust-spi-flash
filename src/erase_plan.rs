@@ -21,7 +21,7 @@ impl ErasePlan {
         while pos < end {
             log::trace!("Evaluating candidates, pos={} end={}", pos, end);
             // Current candidate, (bytes, size, opcode, base).
-            let mut candidate = (0, usize::MAX, 0, 0, None);
+            let mut candidate = (0, std::usize::MAX, 0, 0, None);
             for (erase_size, opcode, duration) in insts.iter() {
                 let erase_base = pos - (pos % erase_size);
                 let erase_end = erase_base + erase_size - 1;

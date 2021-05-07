@@ -296,7 +296,7 @@ impl FlashParams {
 
     /// Get the smallest erase granularity and its opcode.
     pub fn sector_erase(&self) -> Option<(usize, u8)> {
-        let mut size = u32::MAX;
+        let mut size = std::u32::MAX;
         let mut opcode = 0u8;
         for inst in self.erase_insts.iter() {
             if let Some(inst) = inst {
@@ -307,7 +307,7 @@ impl FlashParams {
             }
         }
 
-        if size != u32::MAX {
+        if size != std::u32::MAX {
             Some((size as usize, opcode))
         } else {
             None
